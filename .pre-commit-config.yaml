@@ -20,7 +20,7 @@ repos:
         # https://pre-commit.com/#top_level-default_language_version
         language_version: python3.11
 
-  # General Pre-commit Hooks
+    # General Pre-commit Hooks
     # A set of hooks to:
     # - Detect merge conflicts.
     # - Validate YAML and JSON files.

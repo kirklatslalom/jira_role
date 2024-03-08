@@ -7,7 +7,7 @@
   tags: jdbc-vars
 
 - name: JIRA | MySQL JDBC connector
-  include_task: mysql-jdbc.yml
+  include: mysql-jdbc.yml
   when: (jira_database_type == 'mysql')
   tags:
     - mysql-jdbc
