@@ -3,12 +3,14 @@
 - name: JIRA | Ensure JIRA group
   group:
     name: "{{ jira_group }}"
+  become: true
 
 - name: JIRA | Ensure JIRA user
   user:
     name: "{{ jira_user }}"
     group: "{{ jira_group }}"
     shell: /bin/bash
+  become: true
 
 - name: JIRA | Create path for JIRA's folders
   file:
@@ -21,6 +23,7 @@
     - "{{ jira_home }}"
     - "{{ jira_download_dir }}"
     - "{{ jira_installation_dir }}"
+  become: true
 
 - name: JIRA | Link attachments folder in case not using default one
   file:
@@ -28,6 +31,7 @@
     dest: "{{ jira_attachments_dir }}"
     state: link
   when: jira_attachments_dir != jira_attachments_default_dir
+  become: true
 
 - name: JIRA | Download package
   get_url:
@@ -36,6 +40,7 @@
     owner: "{{ jira_user }}"
     group: "{{ jira_group }}"
   register: jira_downloaded
+  become: true
 
 - name: JIRA | Unarchive package
   unarchive:
@@ -49,9 +54,11 @@
   when: jira_downloaded.changed
   tags:
     - skip_ansible_lint
+  become: true
 
 - name: JIRA | Optional JDBC connectors
   include_tasks: jdbc.yml
   when: jira_database_configuration
   tags:
     - jdbc
+  become: true

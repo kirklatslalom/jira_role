@@ -7,7 +7,7 @@
   tags: jdbc-vars
 
 - name: JIRA | MySQL JDBC connector
-  include: mysql-jdbc.yml
+  ansible.builtin.include_tasks: mysql-jdbc.yml
   when: (jira_database_type == 'mysql')
   tags:
     - mysql-jdbc
