@@ -6,3 +6,4 @@
     state: "{{ jira_service_state }}"
     enabled: "{{ jira_service_enabled }}"
     daemon_reload: yes
+  become: true
