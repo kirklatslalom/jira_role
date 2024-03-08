@@ -51,7 +51,7 @@
     - skip_ansible_lint
 
 - name: JIRA | Optional JDBC connectors
-  include_task: jdbc.yml
+  include_tasks: jdbc.yml
   when: jira_database_configuration
   tags:
     - jdbc

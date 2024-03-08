@@ -1,15 +1,15 @@
 ---
 - name: JIRA | Install
-  include_task: install.yml
+  import_tasks: install.yml
   tags:
     - install
 
 - name: JIRA | Config
-  include_task: config.yml
+  import_tasks: config.yml
   tags:
     - config
 
 - name: JIRA | Service
-  include_task: service.yml
+  import_tasks: service.yml
   tags:
     - service
