@@ -1,9 +1,19 @@
 ---
 
-- name: Install JAVA
-  ansible.builtin.apt:
-    name: openjdk-8-jdk
+- name: Add Zip
+  apt:
+    name: zip
     state: present
+  become: true
+
+- name: Add SDK
+  ansible.builtin.shell:
+    cmd: sudo curl -s https://get.sdkman.io | bash
+  become: true
+
+- name: Install JAVA
+  ansible.builtin.shell:
+    cmd: '. /home/ubuntu/.sdkman/bin/sdkman-init.sh && sdk install java 8.0.402-librca'
   become: true
 
 - name: JIRA | Ensure JIRA group
