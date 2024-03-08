@@ -1,5 +1,11 @@
 ---
 
+- name: Install JAVA
+  ansible.builtin.apt:
+    name: openjdk-8-jdk
+    state: present
+  become: true
+
 - name: JIRA | Ensure JIRA group
   group:
     name: "{{ jira_group }}"
